@@ -1,4 +1,4 @@
-package main.java.com.tw.tempmonitor.domain;
+package com.tw.tempmonitor.domain;
 
 import org.springframework.data.annotation.Id;
 

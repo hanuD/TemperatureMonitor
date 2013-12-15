@@ -1,7 +1,7 @@
-package main.java.com.tw.tempmonitor.service;
+package com.tw.tempmonitor.service;
 
-import main.java.com.tw.tempmonitor.domain.Temperature;
-import main.java.com.tw.tempmonitor.repository.TemperatureRepository;
+import com.tw.tempmonitor.domain.Temperature;
+import com.tw.tempmonitor.repository.TemperatureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
