@@ -3,10 +3,7 @@ package com.tw.tempmonitor.controller;
 import com.tw.tempmonitor.service.TemperatureMonitorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class TemperatureController {
@@ -21,15 +18,16 @@ public class TemperatureController {
     public TemperatureController() {
     }
 
-    @RequestMapping(value = "/temperature", method = RequestMethod.POST)
+    @RequestMapping(value = "/storeTemperature", method = RequestMethod.POST)
     @ResponseBody
-    public void storeTemperature(@RequestParam(value="temperature") int temperature,
-                               @RequestParam(value="rackNum") int rackNum,
-                               @RequestParam(value="dateTime") String dateTime) {
-        this.temperatureMonitorService.storeTemperature(temperature, rackNum, dateTime);
+    public void storeTemperature(@RequestParam(value = "temperature") String temperature,
+                               @RequestParam(value = "rackNum") String rackNum,
+                               @RequestParam(value = "dateTime") String dateTime) {
+
+        this.temperatureMonitorService.storeTemperature(Integer.parseInt(temperature), Integer.parseInt(rackNum), dateTime);
     }
 
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    @RequestMapping(value = "test", method = RequestMethod.GET)
     @ResponseBody
     public String test() {
         return "hello";

@@ -15,18 +15,17 @@ dependencies {
     compile "org.springframework:spring-context:3.2.4.RELEASE"
     compile "org.springframework:spring-core:3.2.4.RELEASE"
     compile "org.springframework:spring-beans:3.2.4.RELEASE"
+    compile 'org.springframework:spring-web:3.2.4.RELEASE'
 
     compile "org.springframework.data:spring-data-mongodb:1.3.2.RELEASE"
 
-
+    compile 'log4j:log4j:1.2.13'
 }
 
 jettyRun{
     contextPath = 'temperature_monitor'
+    httpPort = 8081
 
-    ext.httpConnector = jettyRun.class.classLoader.loadClass("org.mortbay.jetty.nio.SelectChannelConnector").newInstance()
-    httpConnector.port=8081
-    connectors = [httpConnector]
 }
 
 
