@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Temperature Display</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link href="/temperature_monitor/resources/css/style.css" rel="stylesheet" type="text/css">
+    <script language="javascript" type="text/javascript" src="/temperature_monitor/resources/js/jquery.min.js"></script>
+    <script language="javascript" type="text/javascript"
+            src="/temperature_monitor/resources/js/jquery.flot.min.js"></script>
+
+<script type="text/javascript">
+
+    $(function() {
+    var data = [];
+    var totalPoints = 10;
+
+    function getServerData() {
+
+    if (data.length > 0)
+    data = data.slice(1);
+
+    $.get( "/temperature_monitor/getTemperature", function( result ) {
+    data.push(result);
+    });
+
+    var res = [];
+
+    for (var i = 0; i < data.length; ++i) {
+    res.push([i, data[i]])
+    }
+    return res;
+    }
+
+    function getRandomData() {
+
+    if (data.length > 0)
+    data = data.slice(1);
+
+    while (data.length < totalPoints) {
+    var prev = data.length > 0 ? data[data.length - 1] : 50,
+    y = prev + Math.random() * 10 - 5;
+
+    if (y < 0) {
+    y = 0;
+    } else if (y > 100) {
+    y = 100;
+    }
+    data.push(y);
+    }
+
+    var res = [];
+    for (var i = 0; i < data.length; ++i) {
+    res.push([i, data[i]])
+    }
+
+    return res;
+    }
+
+    var updateInterval = 1000;
+
+    var plot = $.plot("#placeholder", [ getRandomData() ], {
+    series: {
+    shadowSize: 0 // Drawing is faster without shadows
+    },
+    yaxis: {
+    min: 0,
+    max: 80
+    },
+    xaxis: {
+    show: false
+    }
+    });
+
+    function update() {
+    plot.setData([getRandomData()]);
+    plot.draw();
+    setTimeout(update, updateInterval);
+    }
+    update();
+    });
+
+    </script>
+</head>
+<body>
+
+<div id="content">
+
+    <div class="demo-container">
+        <div id="placeholder" class="demo-placeholder"></div>
+    </div>
+
+</div>
+
+</body>
+</html>

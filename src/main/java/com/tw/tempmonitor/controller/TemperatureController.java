@@ -32,4 +32,10 @@ public class TemperatureController {
     public String test() {
         return "hello";
     }
+
+    @RequestMapping(value = "/getTemperature", method = RequestMethod.GET)
+    @ResponseBody
+    public String getTemperature() {
+        return String.valueOf((int) (Math.random() * 10));
+    }
 }
