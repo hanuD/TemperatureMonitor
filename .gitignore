@@ -1,0 +1,16 @@
+*.class
+*.jar
+!/libs/*.jar
+*.war
+*.ear
+*.iml
+.DS_Store
+bin
+build/
+.settings
+.gradle
+.classpath
+.project
+.idea/
+classes
+out/
