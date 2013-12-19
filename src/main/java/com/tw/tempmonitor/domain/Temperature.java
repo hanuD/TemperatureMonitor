@@ -2,7 +2,10 @@ package com.tw.tempmonitor.domain;
 
 import org.springframework.data.annotation.Id;
 
-public class Temperature {
+import java.io.Serializable;
+import java.util.Date;
+
+public class Temperature implements Serializable{
 
     @Id
     private String id;
@@ -11,12 +14,15 @@ public class Temperature {
 
     private int temperature;
 
-    private String dateTime;
+    private Date dateTime;
 
-    public Temperature(int rackNum, int temperature, String dateTime) {
+    public Temperature(int rackNum, int temperature, Date dateTime) {
         this.rackNum = rackNum;
         this.temperature = temperature;
         this.dateTime = dateTime;
+    }
+
+    public Temperature() {
     }
 
     @Override
@@ -37,7 +43,7 @@ public class Temperature {
         return temperature;
     }
 
-    public String getDateTime() {
+    public Date getDateTime() {
         return dateTime;
     }
 }

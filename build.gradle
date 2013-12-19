@@ -18,6 +18,7 @@ dependencies {
     compile 'org.springframework:spring-web:3.2.4.RELEASE'
 
     compile "org.springframework.data:spring-data-mongodb:1.3.2.RELEASE"
+    compile 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
 
     compile 'log4j:log4j:1.2.13'
 }
