@@ -20,7 +20,7 @@ temperature = reading * 0.488;
 }
 
 void sendData(){
-    Wire.write(temperature);
+    Wire.write((int)temperature);
 }
 
 
