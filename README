@@ -1,1 +1,12 @@
-Temeperature Monitor using Rasp Pi, Spring and MongoDB
+Temeperature Monitor built using Raspberry Pi, Arduino and temperature sensors.
+
+Multiple temperature sensors are connected to Arduino ports and constantly send the temperature.
+Arduino relays back the temperature to Raspberry Pi every 5 seconds and Raspberry Pi sends a POST request to a server application.
+
+The server application creates a corresponding entry in MongoDB and displays the temperature graph to the user.
+
+Tech stack used
+
+Raspberry Pi - Python
+Arduino - arduino library
+Server application - Java, Spring, mongorepository and javascript libraries.
