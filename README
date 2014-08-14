@@ -1,4 +1,4 @@
-Temeperature Monitor built using Raspberry Pi, Arduino and temperature sensors.
+Temeperature Monitor built using Raspberry Pi, Arduino and LM35 temperature sensors.
 
 Multiple temperature sensors are connected to Arduino ports and constantly send the temperature.
 Arduino relays back the temperature to Raspberry Pi every 5 seconds and Raspberry Pi sends a POST request to a server application.
